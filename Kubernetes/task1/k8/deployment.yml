@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: myapp
+  name: myapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapp
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - image: docker.io/rajglory/mydockerhub:my_task1_app_v1.0
+        imagePullPolicy: IfNotPresent
+        name: myapp
+        resources: {}
+      
+      imagePullSecrets:
+      - name: mydockerhub
+status: {}
